@@ -1,0 +1,22 @@
+kafka-topics --create --topic solar-module-raw --bootstrap-server localhost:9092
+kafka-topics --create --topic solar-module-anomalies --bootstrap-server localhost:9092
+kafka-console-producer --broker-list localhost:9092 --topic solar-module-raw --property "parse.key=true" --property "key.separator=:"
+kafka-console-consumer --bootstrap-server localhost:9092 --topic solar-module-anomalies --from-beginning
+
+ES-001:{incidencia:001,name:"Manolo",signaltype:"ALARMA"}
+ES-001:{incidencia:002,name:"Manolo",signaltype:"APAGADO"}
+ES-001:{incidencia:003,name:"Manolo",signaltype:"ALARMA"}
+ES-002:{incidencia:001,name:"Carlos",signaltype:"ALARMA"}
+ES-003:{incidencia:001,name:"Pepe",signaltype:"ALARMA"}
+ES-003:{incidencia:002,name:"Pepe",signaltype:"APAGADO"}
+
+
+==================== ORIGINAL =======================
+ES-001:{"power":3.5,"name":"Manolo","panel":"Panel 1"}
+ES-001:{"power":3.4,"name":"Manolo","panel":"Panel 1"}
+ES-001:{"power":3,"name":"Manolo","panel":"Panel 1"}
+ES-002:{"power":1,"name":"Manolo","panel":"Panel 2"}
+ES-002:{"power":2,"name":"Manolo","panel":"Panel 2"}
+ES-002:{"power":4,"name":"Manolo","panel":"Panel 2"}
+
+
